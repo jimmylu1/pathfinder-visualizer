@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Proptypes from 'prop-types';
+import Proptypes from "prop-types";
 
 import "./Node.css";
 
@@ -39,16 +39,28 @@ export default class Node extends Component {
 
     let addClass = "";
 
-    //toggle hover styling
-    if (hover) {
+    //style visited nodes
+    if (board()[row][col].color) {
+      addClass = "visited";
+    }
+
+    //style shortest path
+    if (board()[row][col].shortest) {
+      addClass = "shortest";
+    }
+
+    //toggle hover styling when not on visited or shortest path
+    if (hover && (addClass !== "shortest" && addClass !== 'visited')) {
       addClass = "hovering ";
     }
 
     //add style for start node
     if ((hover && moveStart) || isStart) {
       addClass = "start";
-      //add style for end node
-    } else if ((hover && moveEnd) || isEnd) {
+    }
+
+    //add style for end node
+    if ((hover && moveEnd) || isEnd) {
       addClass = "end";
     }
 
@@ -60,14 +72,6 @@ export default class Node extends Component {
     //add styling for walls
     if (board()[row][col].isWall) {
       addClass = "wall";
-    }
-
-    if (board()[row][col].color) {
-      addClass = "visited";
-    }
-
-    if (board()[row][col].shortest) {
-      addClass = "shortest";
     }
 
     const { mouseDown, mouseUp } = this.props;
@@ -93,6 +97,5 @@ Node.propTypes = {
   isEnd: Proptypes.bool,
   moveStart: Proptypes.bool,
   moveEnd: Proptypes.bool,
-  drawWall: Proptypes.bool,
-  
-}
+  drawWall: Proptypes.bool
+};

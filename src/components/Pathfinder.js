@@ -188,7 +188,6 @@ export default class Pathfinder extends Component {
           style={{
             width: 750,
             height: 750,
-            border: "1px solid black",
             margin: "0px auto",
             marginTop: "10px"
           }}
