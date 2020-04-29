@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Node from "./Node";
+import Proptypes from "prop-types";
 
 import { ALGORITHMS, INITIALSTATE } from "./constants.js";
 
@@ -104,11 +105,12 @@ export default class Pathfinder extends Component {
 
   //reset board to original state
   reset() {
+    const { algorithm } = this.state;
     let board = this.getInitialBoard({});
     this.setState({
       ...INITIALSTATE,
       board,
-      algorithm: this.state.algorithm
+      algorithm: algorithm
     });
   }
 
@@ -206,8 +208,8 @@ export default class Pathfinder extends Component {
                     toggleMouse={toggleMouse}
                     isStart={startRow === rowIdx && startCol === colIdx}
                     isEnd={endRow === rowIdx && endCol === colIdx}
-                    hoverStart={moveStart}
-                    hoverEnd={moveEnd}
+                    moveStart={moveStart}
+                    moveEnd={moveEnd}
                     drawWall={drawWall}
                   />{" "}
                 </div>
@@ -219,3 +221,17 @@ export default class Pathfinder extends Component {
     );
   }
 }
+
+Pathfinder.propTypes = {
+  algoritm: Proptypes.func,
+  INITIALSTATE: Proptypes.shape({
+    width: Proptypes.number,
+    height: Proptypes.number,
+    board: Proptypes.array,
+    moveStart: Proptypes.bool,
+    moveEnd: Proptypes.bool,
+    drawWall: Proptypes.bool,
+    startNode: Proptypes.object,
+    endNode: Proptypes.object
+  })
+};

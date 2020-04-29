@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Proptypes from 'prop-types';
 
 import "./Node.css";
 
@@ -29,8 +30,8 @@ export default class Node extends Component {
       board,
       isStart,
       isEnd,
-      hoverStart,
-      hoverEnd,
+      moveStart,
+      moveEnd,
       drawWall
     } = this.props;
 
@@ -44,12 +45,10 @@ export default class Node extends Component {
     }
 
     //add style for start node
-    if ((hover && hoverStart) || isStart) {
+    if ((hover && moveStart) || isStart) {
       addClass = "start";
-    }
-
-    //add style for end node
-    if ((hover && hoverEnd) || isEnd) {
+      //add style for end node
+    } else if ((hover && moveEnd) || isEnd) {
       addClass = "end";
     }
 
@@ -83,4 +82,17 @@ export default class Node extends Component {
       ></div>
     );
   }
+}
+
+Node.propTypes = {
+  row: Proptypes.number,
+  col: Proptypes.number,
+  hover: Proptypes.bool,
+  board: Proptypes.func,
+  isStart: Proptypes.bool,
+  isEnd: Proptypes.bool,
+  moveStart: Proptypes.bool,
+  moveEnd: Proptypes.bool,
+  drawWall: Proptypes.bool,
+  
 }
