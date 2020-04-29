@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Node from "./Node";
 import Proptypes from "prop-types";
 
+//styling
+// import { Button } from "react-bootstrap";
+
 import { ALGORITHMS, INITIALSTATE } from "./constants.js";
 
 export default class Pathfinder extends Component {
@@ -182,8 +185,16 @@ export default class Pathfinder extends Component {
             return <option value={key}>{key}</option>;
           })}
         </select>
-        <button onClick={() => startSearch(algorithm)}>Start</button>
-        <button onClick={() => reset()}>Reset</button>
+        <button
+          style={{ fontSize: "12px" }}
+          className="startButton"
+          onClick={() => startSearch(algorithm)}
+        >
+          Start
+        </button>
+        <button className="resetButton" onClick={() => reset()}>
+          Reset
+        </button>
         <div
           style={{
             width: 750,

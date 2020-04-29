@@ -1,0 +1,17 @@
+/* .pathfinder {
+  width: 750;
+  height: 750;
+  margin: "0px auto";
+  margin-top: "10px";
+}
+
+.board {
+  width: 750;
+  height: 750;
+  margin: "0px auto";
+  margin-top: "10px";
+} */
+
+.startButton {
+  cursor: pointer;
+}

@@ -17,5 +17,5 @@ export const INITIALSTATE = {
   moveEnd: false,
   drawWall: false,
   startNode: { row: 0, col: 0 },
-  endNode: { row: 4, col: 7 }
+  endNode: { row: 6, col: 10 }
 };

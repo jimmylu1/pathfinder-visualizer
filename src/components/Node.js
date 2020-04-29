@@ -50,7 +50,7 @@ export default class Node extends Component {
     }
 
     //toggle hover styling when not on visited or shortest path
-    if (hover && (addClass !== "shortest" && addClass !== 'visited')) {
+    if (hover && (addClass !== "shortest" && addClass !== "visited")) {
       addClass = "hovering ";
     }
 
