@@ -1,17 +1,58 @@
-/* .pathfinder {
-  width: 750;
-  height: 750;
-  margin: "0px auto";
-  margin-top: "10px";
-}
-
 .board {
   width: 750;
   height: 750;
   margin: "0px auto";
-  margin-top: "10px";
-} */
-
+  margin-top: "50px";
+}
 .startButton {
   cursor: pointer;
+  font-size: 15px;
+  height: 100%;
+  width: 110px;
+  background-color: #2a6d39e7;
+  color: rgba(255, 255, 255, 0.884);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  box-shadow: 0px 3px 3px rgb(153, 150, 150);
+  margin-right: 20px;
+}
+
+.startButton:hover {
+  background-color: #145221;
+}
+
+.startButton:active {
+  transform: translateY(2px);
+}
+
+.resetButton {
+  cursor: pointer;
+  font-size: 15px;
+  height: 100%;
+  width: 110px;
+  background-color: #8f2723e7;
+  color: rgba(255, 255, 255, 0.884);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  box-shadow: 0px 3px 3px rgb(153, 150, 150);
+}
+
+.resetButton:hover {
+  background-color: #8f2723fa;
+}
+
+.resetButton:active {
+  transform: translateY(2px);
+}
+
+.selector {
+  margin-right: 20px;
+  height: 100%;
+  width: 110px;
+  background-color: #586fccde;
+  color: rgba(255, 255, 255, 0.884);
 }

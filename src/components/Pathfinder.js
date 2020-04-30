@@ -3,8 +3,7 @@ import Node from "./Node";
 import Proptypes from "prop-types";
 
 //styling
-// import { Button } from "react-bootstrap";
-
+import "./Pathfinder.css";
 import { ALGORITHMS, INITIALSTATE } from "./constants.js";
 
 export default class Pathfinder extends Component {
@@ -174,6 +173,7 @@ export default class Pathfinder extends Component {
     return (
       <div className="pathfinder">
         <select
+          className="selector"
           onChange={algorithm => {
             this.setState({
               algorithm: algorithm.target.value
@@ -185,25 +185,13 @@ export default class Pathfinder extends Component {
             return <option value={key}>{key}</option>;
           })}
         </select>
-        <button
-          style={{ fontSize: "12px" }}
-          className="startButton"
-          onClick={() => startSearch(algorithm)}
-        >
+        <button className="startButton" onClick={() => startSearch(algorithm)}>
           Start
         </button>
         <button className="resetButton" onClick={() => reset()}>
           Reset
         </button>
-        <div
-          style={{
-            width: 750,
-            height: 750,
-            margin: "0px auto",
-            marginTop: "10px"
-          }}
-          className="board"
-        >
+        <div className="board">
           {board.map((nodeRow, rowIdx, key) => {
             return nodeRow.map((nodeCol, colIdx, key) => {
               return (
