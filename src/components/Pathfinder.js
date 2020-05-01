@@ -172,6 +172,7 @@ export default class Pathfinder extends Component {
 
     return (
       <div className="pathfinder">
+        <h1 className="header">Pathfinder Visualizer</h1>
         <select
           className="selector"
           onChange={algorithm => {
@@ -191,7 +192,15 @@ export default class Pathfinder extends Component {
         <button className="resetButton" onClick={() => reset()}>
           Reset
         </button>
-        <div className="board">
+        <div
+          style={{
+            width: 900,
+            height: 600,
+            margin: "0px auto",
+            marginTop: "20px"
+          }}
+          className="board"
+        >
           {board.map((nodeRow, rowIdx, key) => {
             return nodeRow.map((nodeCol, colIdx, key) => {
               return (

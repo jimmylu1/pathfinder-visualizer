@@ -10,8 +10,8 @@ export const ALGORITHMS = {
 
 //define initial state of board
 export const INITIALSTATE = {
-  width: 15,
-  height: 15,
+  width: 16,
+  height: 30,
   board: [],
   moveStart: false,
   moveEnd: false,

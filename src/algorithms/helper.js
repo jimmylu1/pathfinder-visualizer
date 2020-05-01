@@ -23,9 +23,9 @@ export const findShortestPath = (board, endNode) => {
   let currPath = [];
   let currNode = board[endNode.row][endNode.col];
 
-  while (currNode.parent !== undefined) {
-    currPath.unshift(currNode.parent);
-    currNode = currNode.parent;
+  while (currNode.prev !== undefined) {
+    currPath.unshift(currNode.prev);
+    currNode = currNode.prev;
   }
 
   currPath.push(board[endNode.row][endNode.col]);

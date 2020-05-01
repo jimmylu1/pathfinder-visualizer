@@ -2,33 +2,31 @@ import { findNeighbors, findShortestPath } from "./helper";
 
 //BFS algorithm
 export const BFS = (startNode, endNode, board) => {
-  let start = board[startNode.row][startNode.col];
-
+  let start = board[startNode.row][startNode.col],
+    end = board[endNode.row][endNode.col];
   let visited = [];
-  let end = board[endNode.row][endNode.col];
-  let q = [];
-  q.push(start);
+  let q = [start];
+  // q.push(start);
 
-  while (q.length > 0) {
+  while (q.length) {
     let currNode = q.shift();
     currNode.visited = true;
     visited.push(currNode);
-
-    if (currNode.isWall) continue;
+    //found end node
     if (currNode.row === end.row && currNode.col === end.col) break;
-
     const neighbors = findNeighbors(board, currNode.row, currNode.col);
-
-    neighbors.forEach(neighbor => {
+    for (const neighbor of neighbors) {
       if (!neighbor.visited && !neighbor.isWall) {
-        neighbor.parent = currNode;
+        neighbor.prev = currNode;
         q.push(neighbor);
       }
-    });
+    }
   }
-
-  return {
-    path: findShortestPath(board, endNode),
+  let shortestPath = findShortestPath(board, endNode);
+  let res = {
+    path: shortestPath,
     visited
   };
+
+  return res;
 };

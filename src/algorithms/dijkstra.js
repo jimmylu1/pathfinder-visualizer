@@ -1,8 +1,7 @@
 import { findNeighbors, findShortestPath } from "./helper";
 
 export function dijkstra(startNode, endNode, grid) {
-  const start = grid[startNode.row][startNode.col];
-  const end = grid[endNode.row][endNode.col];
+  let start = grid[startNode.row][startNode.col], end = grid[endNode.row][endNode.col];
   start.distance = 0;
 
   let unvisited = [start];
@@ -12,19 +11,24 @@ export function dijkstra(startNode, endNode, grid) {
     let currNode = unvisited.shift();
     currNode.visited = true;
     visited.push(currNode);
+    //if reach end node end search
     if (currNode.row === end.row && currNode.col === end.col) break;
-    for (let node of findNeighbors(grid, currNode.row, currNode.col)) {
-      if (node.visited || node.isWall) continue;
+    let neighbors = findNeighbors(grid, currNode.row, currNode.col);
+    for (const neighbor of neighbors) {
+      //if node is visited or a wall, skip iteration to next node
+      if (neighbor.visited || neighbor.isWall) continue;
       let currDistance = currNode.distance + 1;
-      if (currDistance < node.distance) {
-        node.parent = currNode;
-        node.distance = currDistance;
-        unvisited.push(node);
+      if (currDistance < neighbor.distance) {
+        neighbor.prev = currNode;
+        neighbor.distance = currDistance;
+        unvisited.push(neighbor);
       }
     }
   }
-  return {
-    path: findShortestPath(grid, endNode),
+  let shortestPath = findShortestPath(grid, endNode);
+  let res = {
+    path: shortestPath,
     visited
   };
+  return res;
 }
