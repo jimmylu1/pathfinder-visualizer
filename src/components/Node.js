@@ -65,12 +65,15 @@ export default class Node extends Component {
     }
 
     //determine which nodes are walls
-    if (drawWall && hover) {
+    if ((addClass !== "start" || addClass !== "end") && drawWall && hover) {
       board()[row][col].isWall = true;
     }
 
     //add styling for walls
-    if (board()[row][col].isWall) {
+    if (
+      (addClass !== "start" || addClass !== "end") &&
+      board()[row][col].isWall
+    ) {
       addClass = "wall";
     }
 

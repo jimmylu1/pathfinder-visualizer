@@ -6,7 +6,6 @@ export const BFS = (startNode, endNode, board) => {
     end = board[endNode.row][endNode.col];
   let visited = [];
   let q = [start];
-  // q.push(start);
 
   while (q.length) {
     let currNode = q.shift();
